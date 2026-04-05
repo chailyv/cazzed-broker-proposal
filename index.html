@@ -1,0 +1,382 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Nunito',sans-serif;background:#111;color:#fff;overflow-x:hidden}
+  .tag{display:inline-block;background:#FFE500;color:#111;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px}
+  .btn-yellow{background:#FFE500;color:#111;font-weight:900;font-size:14px;padding:14px 28px;border:none;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:transform .1s}
+  .btn-yellow:hover{transform:scale(1.03)}
+  .btn-outline{background:transparent;color:#FFE500;font-weight:900;font-size:14px;padding:14px 28px;border:2px solid #FFE500;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px}
+  .sec{padding:72px 24px;max-width:960px;margin:0 auto}
+  .divider{height:4px;background:#FFE500;width:60px;margin:12px 0 20px}
+  .stat-card{background:#1a1a1a;border:2px solid #FFE500;border-radius:12px;padding:24px 16px;text-align:center}
+  .stat-num{font-size:36px;font-weight:900;color:#FFE500;line-height:1}
+  .stat-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+  .chart-shell{background:#1a1a1a;border-radius:16px;padding:24px;margin-bottom:16px}
+  .chart-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#FFE500;margin-bottom:4px}
+  .chart-sub{font-size:11px;color:#666;margin-bottom:18px}
+  .funnel-row{display:flex;gap:10px;margin-bottom:8px;align-items:stretch}
+  .funnel-label{font-weight:900;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:8px 10px;border-radius:8px;display:flex;align-items:center;justify-content:center;min-width:88px;text-align:center;line-height:1.3}
+  .funnel-body{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:14px;flex:1;font-size:12px;color:#ccc;line-height:1.6}
+  .funnel-body strong{color:#FFE500;font-size:10px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
+  .pkg-card{background:#1a1a1a;border:2px solid #2a2a2a;border-radius:16px;padding:24px;position:relative;overflow:hidden}
+  .pkg-card.featured{border-color:#FFE500}
+  .pkg-card.featured::before{content:'TOP PICK';position:absolute;top:14px;right:-26px;background:#FFE500;color:#111;font-size:9px;font-weight:900;letter-spacing:1px;padding:4px 36px;transform:rotate(45deg)}
+  .pkg-price{font-size:30px;font-weight:900;color:#FFE500;margin:10px 0 4px}
+  .pkg-price span{font-size:13px;font-weight:400;color:#666}
+  .fi{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #222;font-size:12px;color:#ccc}
+  .fi:last-child{border-bottom:none}
+  .ck{color:#FFE500;font-weight:900;font-size:13px;flex-shrink:0}
+  .kpi-item{background:#1a1a1a;border-radius:8px;padding:14px;border-left:3px solid #FFE500}
+  .kpi-target{font-size:20px;font-weight:900;color:#FFE500}
+  .kpi-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+  .kpi-bench{font-size:10px;color:#444;margin-top:2px}
+  .step-card{background:#1a1a1a;border-radius:12px;padding:18px;border-bottom:3px solid #FFE500;text-align:center}
+  .step-num{width:38px;height:38px;background:#FFE500;color:#111;border-radius:50%;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+  .ticker{background:#FFE500;color:#111;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 0;overflow:hidden;white-space:nowrap}
+  .ticker-inner{display:inline-block;animation:scroll 22s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .big-text{font-size:clamp(40px,7vw,78px);font-weight:900;line-height:1;letter-spacing:-2px}
+  .sec-tag{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#FFE500;margin-bottom:6px}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .problem-item{background:#1a1a1a;border-radius:12px;padding:18px;border-left:4px solid #E63030}
+  .pnum{font-size:30px;font-weight:900;color:#E63030}
+  .testimony{background:#1a1a1a;border-radius:12px;padding:18px;border-top:3px solid #FFE500;font-size:12px;color:#bbb;line-height:1.7}
+  .testimony .author{color:#FFE500;font-weight:900;font-size:11px;margin-top:8px;text-transform:uppercase;letter-spacing:1px}
+  .nav{background:#111;border-bottom:2px solid #FFE500;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+  .logo{font-size:22px;font-weight:900;color:#FFE500;letter-spacing:-1px}
+  .logo span{color:#fff}
+  hr.y{border:none;border-top:2px solid #FFE500;margin:0}
+  .legend-dot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+  .channel-card{background:#1a1a1a;border-radius:12px;padding:18px;border-top:3px solid #FFE500}
+  @media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}.big-text{font-size:38px}}
+</style>
+
+<div style="background:#111">
+
+<nav class="nav">
+  <div class="logo">cazzed<span>!</span></div>
+  <div style="display:flex;gap:10px">
+    <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
+    <button class="btn-yellow" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">See Packages</button>
+  </div>
+</nav>
+
+<div class="ticker">
+  <span class="ticker-inner">FOREX BROKER GROWTH &nbsp;•&nbsp; META ADS &nbsp;•&nbsp; TIKTOK ADS &nbsp;•&nbsp; FUNNEL STRATEGY &nbsp;•&nbsp; 486 LEADS AT RM80/DAY &nbsp;•&nbsp; 31.96% KYC→FTD RATE &nbsp;•&nbsp; $8.51 LEAD CPA &nbsp;•&nbsp; 2.2x ROAS &nbsp;•&nbsp; FOREX BROKER GROWTH &nbsp;•&nbsp; META ADS &nbsp;•&nbsp; TIKTOK ADS &nbsp;•&nbsp; FUNNEL STRATEGY &nbsp;•&nbsp; 486 LEADS AT RM80/DAY &nbsp;•&nbsp; 31.96% KYC→FTD RATE &nbsp;•&nbsp; $8.51 LEAD CPA &nbsp;•&nbsp; 2.2x ROAS &nbsp;•&nbsp;</span>
+</div>
+
+<section style="padding:80px 24px 60px;max-width:960px;margin:0 auto">
+  <div class="tag" style="margin-bottom:18px">Marketing Proposal — Forex Brokers Malaysia</div>
+  <div class="big-text" style="margin-bottom:18px">
+    Hi broker,<br>
+    <span style="color:#FFE500">you just got</span><br>
+    <span style="background:#FFE500;color:#111;padding:0 8px;border-radius:8px">cazzed!</span>
+  </div>
+  <p style="font-size:15px;color:#aaa;max-width:540px;line-height:1.8;margin-bottom:28px">We turn RM80/day into 480+ qualified trading leads. Not with random ads. With a system. Education-first. Data-driven. Built for the Malaysian broker market.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <button class="btn-yellow" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})">See Real Results ↓</button>
+    <button class="btn-outline" onclick="document.getElementById('strategy').scrollIntoView({behavior:'smooth'})">The Strategy</button>
+  </div>
+</section>
+
+<hr class="y">
+
+<section id="results" class="sec">
+  <div class="sec-tag">The Proof</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">Real numbers. Real campaign.</h2>
+  <div class="divider"></div>
+  <p style="color:#666;font-size:12px;margin-bottom:24px">Vestrado LTD × Cazzed! — Nov 2025 to Feb 2026. Budget: RM80/day.</p>
+  <div class="g4" style="margin-bottom:28px">
+    <div class="stat-card"><div class="stat-num">486</div><div class="stat-label">Qualified Leads</div></div>
+    <div class="stat-card"><div class="stat-num">$8.51</div><div class="stat-label">Lead CPA<br><span style="color:#444;font-size:10px">vs $10–18 avg</span></div></div>
+    <div class="stat-card"><div class="stat-num">31.96%</div><div class="stat-label">KYC→FTD Rate<br><span style="color:#444;font-size:10px">vs 15–20% avg</span></div></div>
+    <div class="stat-card"><div class="stat-num">2.2x</div><div class="stat-label">ROAS Feb<br><span style="color:#444;font-size:10px">started at 0.9x</span></div></div>
+  </div>
+  <div class="g2" style="margin-bottom:28px">
+    <div class="chart-shell">
+      <div class="chart-title">CTR Growth — Nov to Feb</div>
+      <div class="chart-sub">Average click-through rate over campaign lifetime</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+        <span><span class="legend-dot" style="background:#FFE500"></span>Cazzed! Campaign</span>
+        <span><span class="legend-dot" style="background:#444"></span>Industry Avg</span>
+      </div>
+      <div style="position:relative;height:200px"><canvas id="ctrChart"></canvas></div>
+    </div>
+    <div class="chart-shell">
+      <div class="chart-title">ROAS Trajectory</div>
+      <div class="chart-sub">Return on ad spend — monthly trend</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+        <span><span class="legend-dot" style="background:#FFE500"></span>ROAS</span>
+        <span><span class="legend-dot" style="background:#E63030"></span>Break-even (1.0x)</span>
+      </div>
+      <div style="position:relative;height:200px"><canvas id="roasChart"></canvas></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="chart-shell">
+      <div class="chart-title">CPA Breakdown vs Industry</div>
+      <div class="chart-sub">Our cost per acquisition at every funnel stage</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+        <span><span class="legend-dot" style="background:#FFE500"></span>Cazzed!</span>
+        <span><span class="legend-dot" style="background:#555"></span>Industry Avg</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="cpaChart"></canvas></div>
+    </div>
+    <div class="chart-shell">
+      <div class="chart-title">Conversion Funnel — Lead to FTD</div>
+      <div class="chart-sub">How leads flow through each stage</div>
+      <div style="position:relative;height:220px"><canvas id="funnelChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<hr class="y">
+<section style="background:#FFE500;padding:44px 24px">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <p style="font-size:clamp(20px,3.5vw,38px);font-weight:900;color:#111;line-height:1.2">"Digital marketing is not just about running ads.<br>It is about designing a system that turns attention into action."</p>
+    <p style="font-size:12px;color:#555;margin-top:14px;font-weight:700;text-transform:uppercase;letter-spacing:2px">— Cazzed! Digital Solutions</p>
+  </div>
+</section>
+<hr class="y">
+
+<section class="sec">
+  <div class="sec-tag">The Problem</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">Most broker marketing looks the same.</h2>
+  <div class="divider"></div>
+  <div class="g2" style="margin-bottom:28px">
+    <div class="problem-item"><div class="pnum">97%</div><div style="font-weight:900;margin:4px 0">of your market ignored</div><div style="font-size:12px;color:#888;line-height:1.6">Most brokers fight over the 3% ready to buy. The other 97% — curious, skeptical, researching — get zero attention.</div></div>
+    <div class="problem-item"><div class="pnum">0</div><div style="font-weight:900;margin:4px 0">Trust before selling</div><div style="font-size:12px;color:#888;line-height:1.6">Forex has a reputation problem. Lead with an offer before trust, and cold audiences disappear.</div></div>
+    <div class="problem-item"><div class="pnum">!</div><div style="font-weight:900;margin:4px 0">No funnel. Just ads.</div><div style="font-size:12px;color:#888;line-height:1.6">Sending traffic to the main website converts 2–3× worse than a dedicated landing page funnel.</div></div>
+    <div class="problem-item"><div class="pnum">∞</div><div style="font-weight:900;margin:4px 0">Creative fatigue</div><div style="font-size:12px;color:#888;line-height:1.6">Same visuals. Same copy. Audiences go blind in days. Consistent A/B testing is the only fix.</div></div>
+  </div>
+  <div class="chart-shell">
+    <div class="chart-title">The Awareness Pyramid — Where Your Audience Lives</div>
+    <div class="chart-sub">Most brokers only target the top 3%. We target the overlooked 37%.</div>
+    <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+      <span><span class="legend-dot" style="background:#E63030"></span>Ready Buyer (3%)</span>
+      <span><span class="legend-dot" style="background:#FF8C00"></span>Researching (17%)</span>
+      <span><span class="legend-dot" style="background:#FFE500"></span>Skeptical (20%)</span>
+      <span><span class="legend-dot" style="background:#444"></span>Unaware (60%)</span>
+    </div>
+    <div style="position:relative;height:260px"><canvas id="pyramidChart"></canvas></div>
+  </div>
+</section>
+
+<hr class="y">
+<section id="strategy" class="sec">
+  <div class="sec-tag">The Strategy</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">Education first. Trust before conversion.</h2>
+  <div class="divider" style="margin-bottom:24px"></div>
+  <div class="g3" style="margin-bottom:28px">
+    <div class="step-card"><div class="step-num">1</div><div style="font-weight:900;font-size:13px;margin-bottom:6px">Education Before Conversion</div><div style="font-size:11px;color:#888;line-height:1.6">Teach first. Sell second. When they learn from you, they trust you.</div></div>
+    <div class="step-card"><div class="step-num">2</div><div style="font-weight:900;font-size:13px;margin-bottom:6px">Human, Jargon-Free Messaging</div><div style="font-size:11px;color:#888;line-height:1.6">No RSI. No Fibonacci. Speak like a friend explaining trading over coffee.</div></div>
+    <div class="step-card"><div class="step-num">3</div><div style="font-weight:900;font-size:13px;margin-bottom:6px">Low-Friction Funnel Design</div><div style="font-size:11px;color:#888;line-height:1.6">Ads → Simple Landing Page → One CTA. Every step must feel easy.</div></div>
+  </div>
+  <div class="chart-shell">
+    <div class="chart-title">Budget Allocation by Funnel Stage</div>
+    <div class="chart-sub">How every ringgit is distributed across the 4-stage system</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;color:#888">
+      <span><span class="legend-dot" style="background:#FFE500"></span>Top Funnel 40%</span>
+      <span><span class="legend-dot" style="background:#FF8C00"></span>Mid Funnel 30%</span>
+      <span><span class="legend-dot" style="background:#E63030"></span>Bottom Funnel 20%</span>
+      <span><span class="legend-dot" style="background:#555"></span>Hot Funnel 10%</span>
+    </div>
+    <div style="display:flex;gap:20px;align-items:center">
+      <div style="position:relative;height:220px;width:220px;flex-shrink:0"><canvas id="budgetChart"></canvas></div>
+      <div style="flex:1">
+        <div style="margin-bottom:14px;padding:12px;background:#222;border-radius:8px;border-left:3px solid #FFE500"><div style="font-weight:900;font-size:12px">Top Funnel — 40%</div><div style="font-size:11px;color:#888;margin-top:4px">Memes, myth-busting, bite-size education. Build curiosity. Target: CTR, Video Watch.</div></div>
+        <div style="margin-bottom:14px;padding:12px;background:#222;border-radius:8px;border-left:3px solid #FF8C00"><div style="font-weight:900;font-size:12px">Mid Funnel — 30%</div><div style="font-size:11px;color:#888;margin-top:4px">Social proof, platform walkthrough, demo account. Target: Demo sign-ups.</div></div>
+        <div style="margin-bottom:14px;padding:12px;background:#222;border-radius:8px;border-left:3px solid #E63030"><div style="font-weight:900;font-size:12px">Bottom Funnel — 20%</div><div style="font-size:11px;color:#888;margin-top:4px">Retarget 14-day engagers. Best offers. Target: Real sign-ups, FTDs.</div></div>
+        <div style="padding:12px;background:#222;border-radius:8px;border-left:3px solid #555"><div style="font-weight:900;font-size:12px">Hot Funnel — 10%</div><div style="font-size:11px;color:#888;margin-top:4px">7-day retarget. FOMO. Single CTA. Target: FTDs only.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="y">
+<section class="sec">
+  <div class="sec-tag">Channels</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">Right channel. Right message.</h2>
+  <div class="divider" style="margin-bottom:24px"></div>
+  <div class="g2" style="margin-bottom:28px">
+    <div class="channel-card"><div style="font-weight:900;font-size:15px;margin-bottom:4px">Meta Ads</div><div style="color:#FFE500;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">50% — Primary</div><div style="font-size:12px;color:#888;line-height:1.6">Highest targeting precision. Best for retargeting warm audiences. Scales well with strong creative.</div></div>
+    <div class="channel-card"><div style="font-weight:900;font-size:15px;margin-bottom:4px">TikTok Ads</div><div style="color:#FFE500;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">30% — Secondary</div><div style="font-size:12px;color:#888;line-height:1.6">Lowest CPM for educational content. High organic amplification. Best for 21–30 age bracket.</div></div>
+    <div class="channel-card"><div style="font-weight:900;font-size:15px;margin-bottom:4px">Google / YouTube</div><div style="color:#FFE500;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">15% — Support</div><div style="font-size:12px;color:#888;line-height:1.6">Capture search-intent traffic. Pre-roll for education. Keywords: "cara trade forex", "broker terbaik".</div></div>
+    <div class="channel-card"><div style="font-weight:900;font-size:15px;margin-bottom:4px">Organic + Community</div><div style="color:#FFE500;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">5% — Amplifier</div><div style="font-size:12px;color:#888;line-height:1.6">Shorts and Reels repurposed from paid. Telegram/WhatsApp community for nurturing leads.</div></div>
+  </div>
+  <div class="chart-shell">
+    <div class="chart-title">Channel Budget Split</div>
+    <div class="chart-sub">Recommended monthly ad spend distribution</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;color:#888">
+      <span><span class="legend-dot" style="background:#FFE500"></span>Meta 50%</span>
+      <span><span class="legend-dot" style="background:#FF8C00"></span>TikTok 30%</span>
+      <span><span class="legend-dot" style="background:#E63030"></span>Google/YouTube 15%</span>
+      <span><span class="legend-dot" style="background:#555"></span>Organic 5%</span>
+    </div>
+    <div style="position:relative;height:200px"><canvas id="channelChart"></canvas></div>
+  </div>
+</section>
+
+<hr class="y">
+<section class="sec">
+  <div class="sec-tag">KPIs & Targets</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">What gets measured gets improved.</h2>
+  <div class="divider" style="margin-bottom:24px"></div>
+  <div class="chart-shell" style="margin-bottom:20px">
+    <div class="chart-title">Cazzed! vs Industry Benchmarks</div>
+    <div class="chart-sub">Our targets vs what the industry typically achieves</div>
+    <div style="display:flex;gap:10px;margin-bottom:12px;font-size:11px;color:#888">
+      <span><span class="legend-dot" style="background:#FFE500"></span>Cazzed! Target</span>
+      <span><span class="legend-dot" style="background:#444"></span>Industry Average</span>
+    </div>
+    <div style="position:relative;height:280px"><canvas id="benchChart"></canvas></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+    <div class="kpi-item"><div class="kpi-target">&gt;3.5%</div><div class="kpi-label">CTR</div><div class="kpi-bench">Avg: 1.5–2.5%</div></div>
+    <div class="kpi-item"><div class="kpi-target">&lt;RM40</div><div class="kpi-label">Cost/Lead</div><div class="kpi-bench">Avg: RM50–90</div></div>
+    <div class="kpi-item"><div class="kpi-target">&gt;10%</div><div class="kpi-label">Lead→Demo</div><div class="kpi-bench">Avg: 5–8%</div></div>
+    <div class="kpi-item"><div class="kpi-target">&gt;30%</div><div class="kpi-label">KYC→FTD</div><div class="kpi-bench">Avg: 15–20%</div></div>
+  </div>
+</section>
+
+<hr class="y">
+
+<section id="packages" class="sec">
+  <div class="sec-tag">Investment</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">Simple pricing. Clear deliverables.</h2>
+  <div class="divider" style="margin-bottom:24px"></div>
+  <div class="g3">
+
+    <div class="pkg-card">
+      <div class="tag" style="margin-bottom:10px">Starter</div>
+      <div style="font-size:11px;color:#666;margin-bottom:4px">New to paid ads</div>
+      <div class="pkg-price">RM 7,500<span>/mo</span></div>
+      <div style="height:1px;background:#222;margin:14px 0"></div>
+      <div class="fi"><span class="ck">✓</span>Meta Ads (1 campaign)</div>
+      <div class="fi"><span class="ck">✓</span>Top + bottom funnel</div>
+      <div class="fi"><span class="ck">✓</span>5 creatives/month</div>
+      <div class="fi"><span class="ck">✓</span>1 landing page</div>
+      <div class="fi"><span class="ck">✓</span>Weekly report</div>
+      <div class="fi"><span class="ck">✓</span>Up to RM5k ad spend</div>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="tag" style="margin-bottom:10px;background:#E63030;color:#fff">Growth</div>
+      <div style="font-size:11px;color:#666;margin-bottom:4px">Scale lead volume</div>
+      <div class="pkg-price">RM 12,500<span>/mo</span></div>
+      <div style="height:1px;background:#222;margin:14px 0"></div>
+      <div class="fi"><span class="ck">✓</span>Meta + TikTok Ads</div>
+      <div class="fi"><span class="ck">✓</span>Full 4-stage funnel</div>
+      <div class="fi"><span class="ck">✓</span>12 creatives/month</div>
+      <div class="fi"><span class="ck">✓</span>2 landing pages</div>
+      <div class="fi"><span class="ck">✓</span>6-email nurture flow</div>
+      <div class="fi"><span class="ck">✓</span>Bi-weekly strategy call</div>
+      <div class="fi"><span class="ck">✓</span>Up to RM15k ad spend</div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="tag" style="margin-bottom:10px;background:#222;color:#FFE500">Elite</div>
+      <div style="font-size:11px;color:#666;margin-bottom:4px">Full growth engine</div>
+      <div class="pkg-price">RM 23,500<span>/mo</span></div>
+      <div style="height:1px;background:#222;margin:14px 0"></div>
+      <div class="fi"><span class="ck">✓</span>Meta + TikTok + Google</div>
+      <div class="fi"><span class="ck">✓</span>Full funnel + retention</div>
+      <div class="fi"><span class="ck">✓</span>20+ creatives/month</div>
+      <div class="fi"><span class="ck">✓</span>Landing pages + A/B test</div>
+      <div class="fi"><span class="ck">✓</span>CRM + email automation</div>
+      <div class="fi"><span class="ck">✓</span>Weekly call + deep review</div>
+      <div class="fi"><span class="ck">✓</span>Up to RM40k ad spend</div>
+    </div>
+
+  </div>
+
+  <div class="chart-shell" style="margin-top:24px">
+    <div class="chart-title">Package Value Comparison</div>
+    <div class="chart-sub">What you get at each investment level — deliverables scored across key dimensions</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;color:#888">
+      <span><span class="legend-dot" style="background:#FFE500"></span>Starter RM7,500</span>
+      <span><span class="legend-dot" style="background:#FF8C00"></span>Growth RM12,500</span>
+      <span><span class="legend-dot" style="background:#E63030"></span>Elite RM23,500</span>
+    </div>
+    <div style="position:relative;height:260px"><canvas id="pkgChart"></canvas></div>
+  </div>
+</section>
+
+<hr class="y">
+<section class="sec">
+  <div class="sec-tag">Why Cazzed!</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">We don't chase trends. We build momentum.</h2>
+  <div class="divider" style="margin-bottom:24px"></div>
+  <div class="g2" style="margin-bottom:28px">
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:#1a1a1a;border-radius:10px"><div style="width:30px;height:30px;background:#FFE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#111;flex-shrink:0;font-size:13px">✓</div><div><div style="font-weight:900;margin-bottom:3px;font-size:13px">Niche-Only Expertise</div><div style="font-size:12px;color:#888;line-height:1.5">Works exclusively in trading and broker marketing. Every strategy battle-tested in this industry.</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:#1a1a1a;border-radius:10px"><div style="width:30px;height:30px;background:#FFE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#111;flex-shrink:0;font-size:13px">✓</div><div><div style="font-weight:900;margin-bottom:3px;font-size:13px">Proven Results, Not Promises</div><div style="font-size:12px;color:#888;line-height:1.5">486 leads. $8.51 CPA. 31.96% KYC-to-FTD. Real numbers from a real broker campaign.</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:#1a1a1a;border-radius:10px"><div style="width:30px;height:30px;background:#FFE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#111;flex-shrink:0;font-size:13px">✓</div><div><div style="font-weight:900;margin-bottom:3px;font-size:13px">You Own Everything</div><div style="font-size:12px;color:#888;line-height:1.5">Every ad account, landing page, and data is yours. No lock-in. No hostage-taking.</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:#1a1a1a;border-radius:10px"><div style="width:30px;height:30px;background:#FFE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#111;flex-shrink:0;font-size:13px">✓</div><div><div style="font-weight:900;margin-bottom:3px;font-size:13px">Live in 7 Days</div><div style="font-size:12px;color:#888;line-height:1.5">Campaigns go live within 7 days of onboarding. No 6-week strategy phase first.</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:#1a1a1a;border-radius:10px"><div style="width:30px;height:30px;background:#FFE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#111;flex-shrink:0;font-size:13px">✓</div><div><div style="font-weight:900;margin-bottom:3px;font-size:13px">Senior-Level Execution</div><div style="font-size:12px;color:#888;line-height:1.5">Your account is handled by our lead strategist — not a junior executive.</div></div></div>
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:#1a1a1a;border-radius:10px"><div style="width:30px;height:30px;background:#FFE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#111;flex-shrink:0;font-size:13px">✓</div><div><div style="font-weight:900;margin-bottom:3px;font-size:13px">Data-Driven</div><div style="font-size:12px;color:#888;line-height:1.5">Every budget decision backed by data. Kill losers fast. Scale winners aggressively.</div></div></div>
+  </div>
+  <div class="chart-shell">
+    <div class="chart-title">90-Day Growth Roadmap</div>
+    <div class="chart-sub">Projected lead volume ramp from launch to full-scale</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;color:#888">
+      <span><span class="legend-dot" style="background:#FFE500"></span>Weekly Leads</span>
+      <span><span class="legend-dot" style="background:#E63030"></span>Cumulative Leads</span>
+    </div>
+    <div style="position:relative;height:220px"><canvas id="roadmapChart"></canvas></div>
+  </div>
+</section>
+
+<hr class="y">
+<section class="sec">
+  <div class="sec-tag">What Clients Say</div>
+  <h2 style="font-size:26px;font-weight:900;margin-bottom:6px">Words from people we've cazzed!</h2>
+  <div class="divider" style="margin-bottom:24px"></div>
+  <div class="g3">
+    <div class="testimony">"Cazzed! helped us restructure our entire digital presence. Everything became clearer and more effective. Noticeable improvement in engagement and inquiries within a short time."<div class="author">Matt Dan Lee — Vestrado LTD</div></div>
+    <div class="testimony">"Working with Cazzed! has been smooth and professional. Their team understands what works and focuses on results, not just ideas. Better performance across all campaigns."<div class="author">Sarah V — 88Trader</div></div>
+    <div class="testimony">"Cazzed! helped us think differently about how we present our brand. The improvement in our online visibility and engagement has been really significant."<div class="author">AyahLemanFx</div></div>
+  </div>
+</section>
+
+<hr class="y">
+<section id="contact" style="background:#FFE500;padding:72px 24px;text-align:center">
+  <div style="max-width:600px;margin:0 auto">
+    <div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#555;margin-bottom:14px">Let's Build Something Great</div>
+    <div style="font-size:clamp(30px,6vw,58px);font-weight:900;color:#111;line-height:1;margin-bottom:6px">Ready to get</div>
+    <div style="font-size:clamp(30px,6vw,58px);font-weight:900;color:#111;line-height:1;margin-bottom:22px">cazzed?</div>
+    <p style="font-size:14px;color:#555;margin-bottom:28px;line-height:1.7">Your competitors are spending the same budget and getting half the results because they are running ads without a system. This proposal is that system.</p>
+    <button class="btn-yellow" style="background:#111;color:#FFE500;border:2px solid #111" onclick="sendPrompt('I want to know more about working with Cazzed! for my forex broker')">Talk to Cazzed! ↗</button>
+    <p style="margin-top:22px;font-size:12px;color:#777">Cazzed Digital Solutions &nbsp;|&nbsp; 202603072376 (CA0418361-A) &nbsp;|&nbsp; PM: Faiz Zamir &nbsp;|&nbsp; 013-4213397</p>
+  </div>
+</section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const Y='#FFE500',R='#E63030',O='#FF8C00',G='#888',D='#333',W='#fff';
+const base={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#222',titleColor:Y,bodyColor:W,borderColor:'#333',borderWidth:1}},scales:{x:{grid:{color:'#222'},ticks:{color:G,font:{size:11}}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:11}}}}};
+
+new Chart(document.getElementById('ctrChart'),{type:'line',data:{labels:['Nov','Dec','Jan','Feb'],datasets:[{label:'Cazzed',data:[3.8,3.2,3.1,4.7],borderColor:Y,backgroundColor:'rgba(255,229,0,0.08)',fill:true,tension:0.4,pointBackgroundColor:Y,pointRadius:5,borderWidth:2},{label:'Industry',data:[2,2,2,2],borderColor:'#444',borderDash:[4,4],pointRadius:0,borderWidth:1.5}]},options:{...base,scales:{x:{grid:{color:'#222'},ticks:{color:G,font:{size:11}}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:11}},min:0,max:6}}}});
+
+new Chart(document.getElementById('roasChart'),{type:'line',data:{labels:['Nov','Dec','Jan','Feb'],datasets:[{label:'ROAS',data:[0.9,1.3,1.1,2.2],borderColor:Y,backgroundColor:'rgba(255,229,0,0.08)',fill:true,tension:0.4,pointBackgroundColor:Y,pointRadius:5,borderWidth:2},{label:'Break-even',data:[1,1,1,1],borderColor:R,borderDash:[4,4],pointRadius:0,borderWidth:1.5}]},options:{...base,scales:{x:{grid:{color:'#222'},ticks:{color:G,font:{size:11}}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:11}},min:0,max:3}}}});
+
+new Chart(document.getElementById('cpaChart'),{type:'bar',data:{labels:['Lead CPA','KYC CPA','FTD CPA'],datasets:[{label:'Cazzed!',data:[8.51,22.64,73.86],backgroundColor:Y,borderRadius:6,barPercentage:0.4},{label:'Industry',data:[14,70,265],backgroundColor:'#333',borderRadius:6,barPercentage:0.4}]},options:{...base,indexAxis:'y',scales:{x:{grid:{color:'#222'},ticks:{color:G,font:{size:10}}},y:{grid:{color:'#222'},ticks:{color:W,font:{size:11,weight:'bold'}}}}}});
+
+new Chart(document.getElementById('funnelChart'),{type:'bar',data:{labels:['Clicks','Leads','Demo','KYC','FTD'],datasets:[{data:[10340,486,214,137,44],backgroundColor:[Y,O,R,'#cc2a2a','#991f1f'],borderRadius:6,barPercentage:0.6}]},options:{...base,plugins:{legend:{display:false},tooltip:{backgroundColor:'#222',titleColor:Y,bodyColor:W}},scales:{x:{grid:{color:'#222'},ticks:{color:W,font:{size:11}}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:10}}}}}});
+
+new Chart(document.getElementById('pyramidChart'),{type:'bar',data:{labels:['Ready Buyer','Actively Researching','Interested but Skeptical','Unaware'],datasets:[{data:[3,17,20,60],backgroundColor:[R,O,Y,D],borderRadius:6,barPercentage:0.55}]},options:{...base,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.raw}% of market`},backgroundColor:'#222',titleColor:Y,bodyColor:W}},scales:{x:{grid:{color:'#222'},ticks:{color:G,font:{size:11}},max:75},y:{grid:{color:'#1a1a1a'},ticks:{color:W,font:{size:11,weight:'bold'}}}}}});
+
+new Chart(document.getElementById('budgetChart'),{type:'doughnut',data:{labels:['Top Funnel','Mid Funnel','Bottom Funnel','Hot Funnel'],datasets:[{data:[40,30,20,10],backgroundColor:[Y,O,R,'#444'],borderColor:'#111',borderWidth:3,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false},tooltip:{backgroundColor:'#222',titleColor:Y,bodyColor:W,callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw}%`}}}}});
+
+new Chart(document.getElementById('channelChart'),{type:'bar',data:{labels:['Meta Ads','TikTok Ads','Google/YouTube','Organic'],datasets:[{data:[50,30,15,5],backgroundColor:[Y,O,R,'#444'],borderRadius:8,barPercentage:0.55}]},options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.raw}% of budget`},backgroundColor:'#222',titleColor:Y,bodyColor:W}},scales:{x:{grid:{color:'#222'},ticks:{color:W,font:{size:11}}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:10},callback:v=>v+'%'},max:60}}}});
+
+new Chart(document.getElementById('benchChart'),{type:'bar',data:{labels:['CTR','Lead→Demo CVR','Demo→KYC','KYC→FTD','ROAS'],datasets:[{label:'Cazzed! Target',data:[3.5,10,40,30,200],backgroundColor:Y,borderRadius:6,barPercentage:0.38},{label:'Industry Avg',data:[2.0,6.5,25,17.5,120],backgroundColor:'#333',borderRadius:6,barPercentage:0.38}]},options:{...base,plugins:{legend:{display:false},tooltip:{backgroundColor:'#222',titleColor:Y,bodyColor:W}},scales:{x:{grid:{color:'#222'},ticks:{color:W,font:{size:10}}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:10}}}}}});
+
+new Chart(document.getElementById('pkgChart'),{type:'bar',data:{labels:['Channels','Creatives/mo','Landing Pages','Funnel Stages','Support Level','Ad Spend Managed'],datasets:[{label:'Starter RM7,500',data:[1,5,1,2,2,1],backgroundColor:'rgba(255,229,0,0.8)',borderRadius:6,barPercentage:0.28},{label:'Growth RM12,500',data:[2,12,2,4,3,3],backgroundColor:'rgba(255,140,0,0.8)',borderRadius:6,barPercentage:0.28},{label:'Elite RM23,500',data:[3,20,4,4,5,5],backgroundColor:'rgba(230,99,48,0.9)',borderRadius:6,barPercentage:0.28}]},options:{...base,plugins:{legend:{display:false},tooltip:{backgroundColor:'#222',titleColor:Y,bodyColor:W}},scales:{x:{grid:{color:'#222'},ticks:{color:W,font:{size:10},maxRotation:30}},y:{grid:{color:'#222'},ticks:{color:G,font:{size:10}},max:6,title:{display:true,text:'Score (1–5 scale)',color:G,font:{size:10}}}}}});
+
+new Chart(document.getElementById('roadmapChart'),{type:'bar',data:{labels:['Wk1','Wk2','Wk3','Wk4','Wk5','Wk6','Wk7','Wk8','Wk9','Wk10','Wk11','Wk12'],datasets:[{type:'bar',label:'Weekly Leads',data:[8,18,28,46,52,58,68,72,75,88,96,110],backgroundColor:'rgba(255,229,0,0.25)',borderRadius:4,yAxisID:'y'},{type:'line',label:'Cumulative',data:[8,26,54,100,152,210,278,350,425,513,609,719],borderColor:R,borderWidth:2,tension:0.4,pointRadius:4,pointBackgroundColor:R,fill:false,yAxisID:'y1'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#222',titleColor:Y,bodyColor:W}},scales:{x:{grid:{color:'#222'},ticks:{color:G,font:{size:10}}},y:{grid:{color:'#222'},ticks:{color:Y,font:{size:10}},position:'left'},y1:{grid:{drawOnChartArea:false},ticks:{color:R,font:{size:10}},position:'right'}}}});
+</script>
