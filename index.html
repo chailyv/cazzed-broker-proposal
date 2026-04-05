@@ -1,18 +1,19 @@
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Nunito',sans-serif;background:#111;color:#fff;overflow-x:hidden}
   .tag{display:inline-block;background:#FFE500;color:#111;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px}
-  .btn-yellow{background:#FFE500;color:#111;font-weight:900;font-size:14px;padding:14px 28px;border:none;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:transform .1s}
+  .btn-yellow{background:#FFE500;color:#111;font-weight:900;font-size:14px;padding:14px 28px;border:none;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:transform .1s;white-space:nowrap}
   .btn-yellow:hover{transform:scale(1.03)}
-  .btn-outline{background:transparent;color:#FFE500;font-weight:900;font-size:14px;padding:14px 28px;border:2px solid #FFE500;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px}
-  .sec{padding:72px 24px;max-width:960px;margin:0 auto}
+  .btn-outline{background:transparent;color:#FFE500;font-weight:900;font-size:14px;padding:14px 28px;border:2px solid #FFE500;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+  .sec{padding:56px 20px;max-width:960px;margin:0 auto}
   .divider{height:4px;background:#FFE500;width:60px;margin:12px 0 20px}
-  .stat-card{background:#1a1a1a;border:2px solid #FFE500;border-radius:12px;padding:24px 16px;text-align:center}
-  .stat-num{font-size:36px;font-weight:900;color:#FFE500;line-height:1}
+  .stat-card{background:#1a1a1a;border:2px solid #FFE500;border-radius:12px;padding:20px 12px;text-align:center}
+  .stat-num{font-size:clamp(26px,5vw,36px);font-weight:900;color:#FFE500;line-height:1}
   .stat-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
-  .chart-shell{background:#1a1a1a;border-radius:16px;padding:24px;margin-bottom:16px}
+  .chart-shell{background:#1a1a1a;border-radius:16px;padding:20px;margin-bottom:16px}
   .chart-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#FFE500;margin-bottom:4px}
   .chart-sub{font-size:11px;color:#666;margin-bottom:18px}
   .funnel-row{display:flex;gap:10px;margin-bottom:8px;align-items:stretch}
@@ -22,7 +23,7 @@
   .pkg-card{background:#1a1a1a;border:2px solid #2a2a2a;border-radius:16px;padding:24px;position:relative;overflow:hidden}
   .pkg-card.featured{border-color:#FFE500}
   .pkg-card.featured::before{content:'TOP PICK';position:absolute;top:14px;right:-26px;background:#FFE500;color:#111;font-size:9px;font-weight:900;letter-spacing:1px;padding:4px 36px;transform:rotate(45deg)}
-  .pkg-price{font-size:30px;font-weight:900;color:#FFE500;margin:10px 0 4px}
+  .pkg-price{font-size:clamp(22px,4vw,30px);font-weight:900;color:#FFE500;margin:10px 0 4px}
   .pkg-price span{font-size:13px;font-weight:400;color:#666}
   .fi{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #222;font-size:12px;color:#ccc}
   .fi:last-child{border-bottom:none}
@@ -36,29 +37,66 @@
   .ticker{background:#FFE500;color:#111;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 0;overflow:hidden;white-space:nowrap}
   .ticker-inner{display:inline-block;animation:scroll 22s linear infinite}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .big-text{font-size:clamp(40px,7vw,78px);font-weight:900;line-height:1;letter-spacing:-2px}
+  .big-text{font-size:clamp(36px,8vw,78px);font-weight:900;line-height:1.05;letter-spacing:-1px}
   .sec-tag{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#FFE500;margin-bottom:6px}
   .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .problem-item{background:#1a1a1a;border-radius:12px;padding:18px;border-left:4px solid #E63030}
   .pnum{font-size:30px;font-weight:900;color:#E63030}
   .testimony{background:#1a1a1a;border-radius:12px;padding:18px;border-top:3px solid #FFE500;font-size:12px;color:#bbb;line-height:1.7}
   .testimony .author{color:#FFE500;font-weight:900;font-size:11px;margin-top:8px;text-transform:uppercase;letter-spacing:1px}
-  .nav{background:#111;border-bottom:2px solid #FFE500;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-  .logo{font-size:22px;font-weight:900;color:#FFE500;letter-spacing:-1px}
+  .nav{background:#111;border-bottom:2px solid #FFE500;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:10px}
+  .nav-btns{display:flex;gap:8px;flex-shrink:0}
+  .logo{font-size:22px;font-weight:900;color:#FFE500;letter-spacing:-1px;flex-shrink:0}
   .logo span{color:#fff}
   hr.y{border:none;border-top:2px solid #FFE500;margin:0}
   .legend-dot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
   .channel-card{background:#1a1a1a;border-radius:12px;padding:18px;border-top:3px solid #FFE500}
-  @media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}.big-text{font-size:38px}}
+  .budget-layout{display:flex;gap:20px;align-items:center}
+  .budget-chart-wrap{position:relative;height:220px;width:220px;flex-shrink:0}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+  /* ── Tablet: 481px – 768px ── */
+  @media(max-width:768px){
+    .g3{grid-template-columns:1fr 1fr}
+    .g4{grid-template-columns:1fr 1fr}
+    .kpi-grid{grid-template-columns:1fr 1fr}
+    .budget-layout{flex-direction:column;align-items:stretch}
+    .budget-chart-wrap{width:100%;height:240px}
+    .sec{padding:48px 18px}
+  }
+
+  /* ── Mobile: ≤ 480px ── */
+  @media(max-width:480px){
+    .g2,.g3,.g4{grid-template-columns:1fr}
+    .kpi-grid{grid-template-columns:1fr 1fr}
+    .big-text{font-size:clamp(32px,10vw,48px);letter-spacing:-0.5px}
+    .nav{padding:10px 14px}
+    .btn-yellow,.btn-outline{font-size:12px;padding:10px 16px}
+    .sec{padding:40px 16px}
+    .chart-shell{padding:16px}
+    .budget-layout{flex-direction:column;align-items:stretch}
+    .budget-chart-wrap{width:100%;height:220px}
+    .hero-btns{flex-direction:column}
+    .hero-btns .btn-yellow,.hero-btns .btn-outline{width:100%;text-align:center}
+    .stat-card{padding:16px 10px}
+    .pkg-card{padding:20px 16px}
+    .funnel-row{flex-direction:column}
+    .funnel-label{min-width:unset;width:100%}
+    .chart-tall{height:190px!important}
+    .chart-med{height:170px!important}
+    .chart-short{height:155px!important}
+    h2{font-size:clamp(20px,5.5vw,26px)!important}
+  }
 </style>
 
 <div style="background:#111">
 
 <nav class="nav">
   <div class="logo">cazzed<span>!</span></div>
-  <div style="display:flex;gap:10px">
+  <div class="nav-btns">
     <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
     <button class="btn-yellow" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">See Packages</button>
   </div>
@@ -68,15 +106,15 @@
   <span class="ticker-inner">FOREX BROKER GROWTH &nbsp;•&nbsp; META ADS &nbsp;•&nbsp; TIKTOK ADS &nbsp;•&nbsp; FUNNEL STRATEGY &nbsp;•&nbsp; 486 LEADS AT RM80/DAY &nbsp;•&nbsp; 31.96% KYC→FTD RATE &nbsp;•&nbsp; $8.51 LEAD CPA &nbsp;•&nbsp; 2.2x ROAS &nbsp;•&nbsp; FOREX BROKER GROWTH &nbsp;•&nbsp; META ADS &nbsp;•&nbsp; TIKTOK ADS &nbsp;•&nbsp; FUNNEL STRATEGY &nbsp;•&nbsp; 486 LEADS AT RM80/DAY &nbsp;•&nbsp; 31.96% KYC→FTD RATE &nbsp;•&nbsp; $8.51 LEAD CPA &nbsp;•&nbsp; 2.2x ROAS &nbsp;•&nbsp;</span>
 </div>
 
-<section style="padding:80px 24px 60px;max-width:960px;margin:0 auto">
+<section style="padding:clamp(48px,8vw,80px) 20px 60px;max-width:960px;margin:0 auto">
   <div class="tag" style="margin-bottom:18px">Marketing Proposal — Forex Brokers Malaysia</div>
   <div class="big-text" style="margin-bottom:18px">
     Hi broker,<br>
     <span style="color:#FFE500">you just got</span><br>
     <span style="background:#FFE500;color:#111;padding:0 8px;border-radius:8px">cazzed!</span>
   </div>
-  <p style="font-size:15px;color:#aaa;max-width:540px;line-height:1.8;margin-bottom:28px">We turn $80/day into 480+ qualified trading leads. Not with random ads. With a system. Education-first. Data-driven. Built for the Malaysian broker market.</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap">
+  <p style="font-size:15px;color:#aaa;max-width:540px;line-height:1.8;margin-bottom:28px">We turn RM80/day into 480+ qualified trading leads. Not with random ads. With a system. Education-first. Data-driven. Built for the Malaysian broker market.</p>
+  <div class="hero-btns">
     <button class="btn-yellow" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})">See Real Results ↓</button>
     <button class="btn-outline" onclick="document.getElementById('strategy').scrollIntoView({behavior:'smooth'})">The Strategy</button>
   </div>
@@ -99,44 +137,44 @@
     <div class="chart-shell">
       <div class="chart-title">CTR Growth — Nov to Feb</div>
       <div class="chart-sub">Average click-through rate over campaign lifetime</div>
-      <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
         <span><span class="legend-dot" style="background:#FFE500"></span>Cazzed! Campaign</span>
         <span><span class="legend-dot" style="background:#444"></span>Industry Avg</span>
       </div>
-      <div style="position:relative;height:200px"><canvas id="ctrChart"></canvas></div>
+      <div class="chart-short" style="position:relative;height:200px"><canvas id="ctrChart"></canvas></div>
     </div>
     <div class="chart-shell">
       <div class="chart-title">ROAS Trajectory</div>
       <div class="chart-sub">Return on ad spend — monthly trend</div>
-      <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
         <span><span class="legend-dot" style="background:#FFE500"></span>ROAS</span>
         <span><span class="legend-dot" style="background:#E63030"></span>Break-even (1.0x)</span>
       </div>
-      <div style="position:relative;height:200px"><canvas id="roasChart"></canvas></div>
+      <div class="chart-short" style="position:relative;height:200px"><canvas id="roasChart"></canvas></div>
     </div>
   </div>
   <div class="g2">
     <div class="chart-shell">
       <div class="chart-title">CPA Breakdown vs Industry</div>
       <div class="chart-sub">Our cost per acquisition at every funnel stage</div>
-      <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
         <span><span class="legend-dot" style="background:#FFE500"></span>Cazzed!</span>
         <span><span class="legend-dot" style="background:#555"></span>Industry Avg</span>
       </div>
-      <div style="position:relative;height:220px"><canvas id="cpaChart"></canvas></div>
+      <div class="chart-med" style="position:relative;height:220px"><canvas id="cpaChart"></canvas></div>
     </div>
     <div class="chart-shell">
       <div class="chart-title">Conversion Funnel — Lead to FTD</div>
       <div class="chart-sub">How leads flow through each stage</div>
-      <div style="position:relative;height:220px"><canvas id="funnelChart"></canvas></div>
+      <div class="chart-med" style="position:relative;height:220px"><canvas id="funnelChart"></canvas></div>
     </div>
   </div>
 </section>
 
 <hr class="y">
-<section style="background:#FFE500;padding:44px 24px">
+<section style="background:#FFE500;padding:clamp(32px,6vw,44px) 20px">
   <div style="max-width:960px;margin:0 auto;text-align:center">
-    <p style="font-size:clamp(20px,3.5vw,38px);font-weight:900;color:#111;line-height:1.2">"Digital marketing is not just about running ads.<br>It is about designing a system that turns attention into action."</p>
+    <p style="font-size:clamp(18px,3.5vw,38px);font-weight:900;color:#111;line-height:1.3">"Digital marketing is not just about running ads. It is about designing a system that turns attention into action."</p>
     <p style="font-size:12px;color:#555;margin-top:14px;font-weight:700;text-transform:uppercase;letter-spacing:2px">— Cazzed! Digital Solutions</p>
   </div>
 </section>
@@ -155,13 +193,13 @@
   <div class="chart-shell">
     <div class="chart-title">The Awareness Pyramid — Where Your Audience Lives</div>
     <div class="chart-sub">Most brokers only target the top 3%. We target the overlooked 37%.</div>
-    <div style="display:flex;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;font-size:11px;color:#888">
       <span><span class="legend-dot" style="background:#E63030"></span>Ready Buyer (3%)</span>
       <span><span class="legend-dot" style="background:#FF8C00"></span>Researching (17%)</span>
       <span><span class="legend-dot" style="background:#FFE500"></span>Skeptical (20%)</span>
       <span><span class="legend-dot" style="background:#444"></span>Unaware (60%)</span>
     </div>
-    <div style="position:relative;height:260px"><canvas id="pyramidChart"></canvas></div>
+    <div class="chart-tall" style="position:relative;height:260px"><canvas id="pyramidChart"></canvas></div>
   </div>
 </section>
 
@@ -184,9 +222,9 @@
       <span><span class="legend-dot" style="background:#E63030"></span>Bottom Funnel 20%</span>
       <span><span class="legend-dot" style="background:#555"></span>Hot Funnel 10%</span>
     </div>
-    <div style="display:flex;gap:20px;align-items:center">
-      <div style="position:relative;height:220px;width:220px;flex-shrink:0"><canvas id="budgetChart"></canvas></div>
-      <div style="flex:1">
+    <div class="budget-layout">
+      <div class="budget-chart-wrap"><canvas id="budgetChart"></canvas></div>
+      <div class="budget-details">
         <div style="margin-bottom:14px;padding:12px;background:#222;border-radius:8px;border-left:3px solid #FFE500"><div style="font-weight:900;font-size:12px">Top Funnel — 40%</div><div style="font-size:11px;color:#888;margin-top:4px">Memes, myth-busting, bite-size education. Build curiosity. Target: CTR, Video Watch.</div></div>
         <div style="margin-bottom:14px;padding:12px;background:#222;border-radius:8px;border-left:3px solid #FF8C00"><div style="font-weight:900;font-size:12px">Mid Funnel — 30%</div><div style="font-size:11px;color:#888;margin-top:4px">Social proof, platform walkthrough, demo account. Target: Demo sign-ups.</div></div>
         <div style="margin-bottom:14px;padding:12px;background:#222;border-radius:8px;border-left:3px solid #E63030"><div style="font-weight:900;font-size:12px">Bottom Funnel — 20%</div><div style="font-size:11px;color:#888;margin-top:4px">Retarget 14-day engagers. Best offers. Target: Real sign-ups, FTDs.</div></div>
@@ -216,7 +254,7 @@
       <span><span class="legend-dot" style="background:#E63030"></span>Google/YouTube 15%</span>
       <span><span class="legend-dot" style="background:#555"></span>Organic 5%</span>
     </div>
-    <div style="position:relative;height:200px"><canvas id="channelChart"></canvas></div>
+    <div class="chart-short" style="position:relative;height:200px"><canvas id="channelChart"></canvas></div>
   </div>
 </section>
 
@@ -228,13 +266,13 @@
   <div class="chart-shell" style="margin-bottom:20px">
     <div class="chart-title">Cazzed! vs Industry Benchmarks</div>
     <div class="chart-sub">Our targets vs what the industry typically achieves</div>
-    <div style="display:flex;gap:10px;margin-bottom:12px;font-size:11px;color:#888">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;font-size:11px;color:#888">
       <span><span class="legend-dot" style="background:#FFE500"></span>Cazzed! Target</span>
       <span><span class="legend-dot" style="background:#444"></span>Industry Average</span>
     </div>
-    <div style="position:relative;height:280px"><canvas id="benchChart"></canvas></div>
+    <div class="chart-tall" style="position:relative;height:280px"><canvas id="benchChart"></canvas></div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+  <div class="kpi-grid">
     <div class="kpi-item"><div class="kpi-target">&gt;3.5%</div><div class="kpi-label">CTR</div><div class="kpi-bench">Avg: 1.5–2.5%</div></div>
     <div class="kpi-item"><div class="kpi-target">&lt;RM40</div><div class="kpi-label">Cost/Lead</div><div class="kpi-bench">Avg: RM50–90</div></div>
     <div class="kpi-item"><div class="kpi-target">&gt;10%</div><div class="kpi-label">Lead→Demo</div><div class="kpi-bench">Avg: 5–8%</div></div>
@@ -301,7 +339,7 @@
       <span><span class="legend-dot" style="background:#FF8C00"></span>Growth RM12,500</span>
       <span><span class="legend-dot" style="background:#E63030"></span>Elite RM23,500</span>
     </div>
-    <div style="position:relative;height:260px"><canvas id="pkgChart"></canvas></div>
+    <div class="chart-tall" style="position:relative;height:260px"><canvas id="pkgChart"></canvas></div>
   </div>
 </section>
 
@@ -325,7 +363,7 @@
       <span><span class="legend-dot" style="background:#FFE500"></span>Weekly Leads</span>
       <span><span class="legend-dot" style="background:#E63030"></span>Cumulative Leads</span>
     </div>
-    <div style="position:relative;height:220px"><canvas id="roadmapChart"></canvas></div>
+    <div class="chart-med" style="position:relative;height:220px"><canvas id="roadmapChart"></canvas></div>
   </div>
 </section>
 
@@ -342,14 +380,14 @@
 </section>
 
 <hr class="y">
-<section id="contact" style="background:#FFE500;padding:72px 24px;text-align:center">
+<section id="contact" style="background:#FFE500;padding:clamp(48px,8vw,72px) 20px;text-align:center">
   <div style="max-width:600px;margin:0 auto">
     <div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#555;margin-bottom:14px">Let's Build Something Great</div>
     <div style="font-size:clamp(30px,6vw,58px);font-weight:900;color:#111;line-height:1;margin-bottom:6px">Ready to get</div>
     <div style="font-size:clamp(30px,6vw,58px);font-weight:900;color:#111;line-height:1;margin-bottom:22px">cazzed?</div>
     <p style="font-size:14px;color:#555;margin-bottom:28px;line-height:1.7">Your competitors are spending the same budget and getting half the results because they are running ads without a system. This proposal is that system.</p>
     <button class="btn-yellow" style="background:#111;color:#FFE500;border:2px solid #111" onclick="sendPrompt('I want to know more about working with Cazzed! for my forex broker')">Talk to Cazzed! ↗</button>
-    <p style="margin-top:22px;font-size:12px;color:#777">Cazzed Digital Solutions &nbsp;|&nbsp; 202603072376 (CA0418361-A) &nbsp;|&nbsp; PM: Faiz Zamir &nbsp;|&nbsp; 013-4213397</p>
+    <p style="margin-top:22px;font-size:12px;color:#777;line-height:1.8;word-break:break-word">Cazzed Digital Solutions &nbsp;|&nbsp; 202603072376 (CA0418361-A) &nbsp;|&nbsp; PM: Faiz Zamir &nbsp;|&nbsp; 013-4213397</p>
   </div>
 </section>
 
